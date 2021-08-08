@@ -13,7 +13,8 @@ import 'cubit/cubit.dart';
 import 'cubit/obServer.dart';
 
 void main() async {
-  //
+  //we use this line when we use the async
+  //this line ensure all things in the main method is initialized
   WidgetsFlutterBinding.ensureInitialized();
 
   // to execute the observer
@@ -32,9 +33,19 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (BuildContext context) =>
-          AppCubit()..changeMode(formShared: isDark),
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(
+          create: (BuildContext context) =>
+              AppCubit()..changeMode(formShared: isDark),
+        ),
+        BlocProvider(
+          create: (BuildContext context) => NewsCubit()
+            ..getBusiness()
+            ..getScience()
+            ..getSports(),
+        )
+      ],
       child: BlocConsumer<AppCubit, NewsStates>(
         listener: (context, state) {},
         builder: (context, state) {
@@ -82,8 +93,8 @@ class MyApp extends StatelessWidget {
                   backwardsCompatibility:
                       false, //to change the status bar color & brightness
                   systemOverlayStyle: SystemUiOverlayStyle(
-                    statusBarColor: HexColor("333739"),
-                  ),
+                      statusBarColor: HexColor("333739"),
+                      statusBarIconBrightness: Brightness.light),
                   backgroundColor: HexColor("333739"),
                   elevation: 0,
                   titleTextStyle: TextStyle(

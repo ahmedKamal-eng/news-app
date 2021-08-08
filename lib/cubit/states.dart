@@ -16,7 +16,6 @@ class NewsGetBusinessErrorState extends NewsStates {
 //  end business States
 
 // Science States
-
 class NewsGetScienceSuccessState extends NewsStates {}
 
 class NewsGetScienceErrorState extends NewsStates {
@@ -26,12 +25,20 @@ class NewsGetScienceErrorState extends NewsStates {
 //  end science States
 
 // sports States
-
 class NewsGetSportsSuccessState extends NewsStates {}
 
 class NewsGetSportsErrorState extends NewsStates {
   final error;
   NewsGetSportsErrorState({this.error});
+}
+//  end sports States
+
+// search States
+class NewsGetSearchSuccessState extends NewsStates {}
+
+class NewsGetSearchErrorState extends NewsStates {
+  final error;
+  NewsGetSearchErrorState({this.error});
 }
 //  end sports States
 
