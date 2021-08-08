@@ -4,6 +4,7 @@ import 'package:news_app/cubit/cubit.dart';
 import 'package:bloc/bloc.dart';
 import 'package:news_app/network/remote/dio_helper.dart';
 
+import 'cubit/app_cubit.dart';
 import 'cubit/states.dart';
 
 class NewsLayout extends StatelessWidget {
@@ -21,7 +22,15 @@ class NewsLayout extends StatelessWidget {
           return Scaffold(
             appBar: AppBar(
               title: Text('News App'),
-              actions: [Icon(Icons.search)],
+              actions: [
+                IconButton(icon: Icon(Icons.search)),
+                IconButton(
+                  icon: Icon(Icons.brightness_4),
+                  onPressed: () {
+                    AppCubit.get(context).changeMode();
+                  },
+                ),
+              ],
             ),
             body: cubit.screens[cubit.currentIndex],
             bottomNavigationBar: BottomNavigationBar(

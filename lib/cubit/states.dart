@@ -34,3 +34,5 @@ class NewsGetSportsErrorState extends NewsStates {
   NewsGetSportsErrorState({this.error});
 }
 //  end sports States
+
+class NewsChangeModeState extends NewsStates {}

@@ -14,11 +14,11 @@ class NewsCubit extends Cubit<NewsStates> {
 
   //this function we use it in any place to create an object from this cubit
   static NewsCubit get(context) => BlocProvider.of(context);
+
   List screens = [
     BusinessScreen(),
     ScienceScreen(),
     SportsScreen(),
-    SettingScreen()
   ];
 
   int currentIndex = 0;
@@ -26,7 +26,6 @@ class NewsCubit extends Cubit<NewsStates> {
     BottomNavigationBarItem(icon: Icon(Icons.business), label: 'business'),
     BottomNavigationBarItem(icon: Icon(Icons.science), label: 'science'),
     BottomNavigationBarItem(icon: Icon(Icons.sports), label: 'sports'),
-    BottomNavigationBarItem(icon: Icon(Icons.settings), label: 'setting'),
   ];
 
   void changeBottomNavBar(int index) {
@@ -42,7 +41,7 @@ class NewsCubit extends Cubit<NewsStates> {
     DioHelper.get(url: 'v2/top-headlines', query: {
       'country': 'eg',
       'category': 'business',
-      'apiKey': '65f7f556ec76449fa7dc7c0069f040ca'
+      'apiKey': '0563f632697e4b5f8e9d112b3d650469'
     }).then(
       (value) {
         business = value.data['articles'];
@@ -65,7 +64,7 @@ class NewsCubit extends Cubit<NewsStates> {
     DioHelper.get(url: 'v2/top-headlines', query: {
       'country': 'eg',
       'category': 'science',
-      'apiKey': '65f7f556ec76449fa7dc7c0069f040ca'
+      'apiKey': '0563f632697e4b5f8e9d112b3d650469'
     }).then(
       (value) {
         science = value.data['articles'];
@@ -88,7 +87,7 @@ class NewsCubit extends Cubit<NewsStates> {
     DioHelper.get(url: 'v2/top-headlines', query: {
       'country': 'eg',
       'category': 'sports',
-      'apiKey': '65f7f556ec76449fa7dc7c0069f040ca'
+      'apiKey': '0563f632697e4b5f8e9d112b3d650469'
     }).then(
       (value) {
         sports = value.data['articles'];
